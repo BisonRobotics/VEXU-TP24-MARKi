@@ -16,6 +16,3 @@ extern Motor fourBarLeft;
 extern Motor fourBarRight;
 
 extern void tankDrive(int,int);
-
-//extern Motor $motorName;
-//extern Motor $motorGroupName;
