@@ -1,9 +1,23 @@
 #include "robot_config.h"
 
 void op_comp(){
+  bool drive_reverse = false;
+  int left, right;
   while(1){
-    int left = joystick.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);
-    int right = joystick.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y);
+    liftLeft.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    liftRight.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    clampLeft.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    clampRight.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    fourBarLeft.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    fourBarRight.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+
+    if(drive_reverse){
+      left = -joystick.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y);
+      right = -joystick.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);
+    }else{
+      left = joystick.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);
+      right = joystick.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y);
+    }
     tankDrive(left, right);
 
     if(joystick.get_digital(E_CONTROLLER_DIGITAL_R1)){
@@ -17,21 +31,26 @@ void op_comp(){
       liftRight = 0;
     }
 
-    if(joystick.get_digital(E_CONTROLLER_DIGITAL_L1)){
+    if(joystick.get_digital(E_CONTROLLER_DIGITAL_UP)){
       clampLeft = 127;
-      clampRight = 127;
-    }else if(joystick.get_digital(E_CONTROLLER_DIGITAL_L2)){
+    }else if(joystick.get_digital(E_CONTROLLER_DIGITAL_DOWN)){
       clampLeft = -127;
-      clampRight = -127;
     }else{
       clampLeft = 0;
+    }
+
+    if(joystick.get_digital(E_CONTROLLER_DIGITAL_X)){
+      clampRight = 127;
+    }else if(joystick.get_digital(E_CONTROLLER_DIGITAL_B)){
+      clampRight = -127;
+    }else{
       clampRight = 0;
     }
 
-    if(joystick.get_digital(E_CONTROLLER_DIGITAL_UP)){
+    if(joystick.get_digital(E_CONTROLLER_DIGITAL_L2)){
       fourBarLeft = 127;
       fourBarRight = 127;
-    }else if(joystick.get_digital(E_CONTROLLER_DIGITAL_DOWN)){
+    }else if(joystick.get_digital(E_CONTROLLER_DIGITAL_L1)){
       fourBarLeft = -127;
       fourBarRight = -127;
     }else{
@@ -39,6 +58,11 @@ void op_comp(){
       fourBarRight = 0;
     }
 
+    if(joystick.get_digital(E_CONTROLLER_DIGITAL_Y)){
+      drive_reverse = true;
+    }else if(joystick.get_digital(E_CONTROLLER_DIGITAL_A)){
+      drive_reverse = false;
+    }
     delay(2);
   }
 }
