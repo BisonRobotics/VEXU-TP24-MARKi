@@ -63,6 +63,15 @@ void op_comp(){
     }else if(joystick.get_digital(E_CONTROLLER_DIGITAL_A)){
       drive_reverse = false;
     }
+
+    if(joystick.get_digital(E_CONTROLLER_DIGITAL_LEFT)){
+      claw = 127;
+    }else if(joystick.get_digital(E_CONTROLLER_DIGITAL_RIGHT)){
+      claw = -127;
+    }else{
+      claw = 0;
+    }
+    
     delay(2);
   }
 }

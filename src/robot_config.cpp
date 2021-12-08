@@ -28,11 +28,11 @@ Motor clampRight(7, true);
 
 Motor fourBarLeft(13, true);
 Motor fourBarRight(19);
+//
+// Motor leftSideArm(3, true);
+// Motor rightSideArm(18);
 
-Motor leftSideArm(3, true);
-Motor rightSideArm(18);
-
-Motor claw(13);
+Motor claw(2);
 
 //Motor $motorName(PORT_NUMBER, isReversed?);
 //Motor $motorGroupName[]{$motorName1, $motorName2};
