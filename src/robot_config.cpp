@@ -3,12 +3,6 @@
 using namespace pros;
 
 Controller joystick(E_CONTROLLER_MASTER);
-// Motor dRB(20, true);
-// Motor dRM(10, true);
-// Motor dRF(9, true);
-// Motor dLB(11);
-// Motor dLM(12);
-// Motor dLF(5);
 
 Motor dLF(20);
 Motor dLM(10);
@@ -34,6 +28,11 @@ Motor clampRight(7, true);
 
 Motor fourBarLeft(13, true);
 Motor fourBarRight(19);
+
+Motor leftSideArm(3, true);
+Motor rightSideArm(18);
+
+Motor claw(13);
 
 //Motor $motorName(PORT_NUMBER, isReversed?);
 //Motor $motorGroupName[]{$motorName1, $motorName2};
