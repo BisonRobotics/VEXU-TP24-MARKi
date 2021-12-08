@@ -10,6 +10,7 @@ void op_comp(){
     clampRight.set_brake_mode(E_MOTOR_BRAKE_HOLD);
     fourBarLeft.set_brake_mode(E_MOTOR_BRAKE_HOLD);
     fourBarRight.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    claw.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 
     if(drive_reverse){
       left = -joystick.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y);
@@ -71,7 +72,7 @@ void op_comp(){
     }else{
       claw = 0;
     }
-    
+
     delay(2);
   }
 }
